@@ -1,17 +1,26 @@
 <template>
     <v-content class="primary">
         <div class="content">
-            <v-btn
-                color="accent"
-                top
-                right
-                fab
-                v-on:click.prevent="goHome"
-            >
-                <v-icon>mdi-home</v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+                <template v-slot:activator="{on}">
+                    <v-btn
+                            color="accent"
+                            top
+                            right
+                            fab
+                            v-on:click.prevent="goHome"
+                            v-on="on"
+                    >
+                        <v-icon>mdi-home</v-icon>
+                    </v-btn>
+                </template>
+                <span>Volver a facultades</span>
+            </v-tooltip>
+            <span class="title white--text display-1 font-regular">Facultad {{ $route.params.id }}</span>
             <br /><br/>
-            <p class="white--text display-1 font-regular">Facultad {{ $route.params.id }}</p>
+            <div class="main secondary success--text">
+                Aquí van las gráficas, Sumercé!
+            </div>
         </div>
     </v-content>
 </template>
@@ -30,6 +39,16 @@
 
 <style scoped>
     .content {
-        padding: 15px;
+        padding: 20px;
+    }
+    .main {
+        height: 80vh;
+        width: 100vh;
+        border-radius: 3px;
+        margin-left: 5%;
+        text-align: center;
+    }
+    .title {
+        margin-left: 50px;
     }
 </style>
