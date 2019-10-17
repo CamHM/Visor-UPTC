@@ -2,7 +2,7 @@
     <v-card
         class="card secondary"
         elevation="5"
-        v-on:click.prevent.self="navigate(faculty._id)"
+        v-on:click.prevent="navigate(faculty._id)"
     >
         <br />
         <v-avatar color="orange" size="85">

@@ -41,29 +41,16 @@
         },
         data: () => ({
             faculties: [],
-            Sectional: [
-                {
-                    _id: 20,
-                    name: 'Duitama',
-                    abbreviation: 'D'
-                },
-                {
-                    _id: 21,
-                    name: 'Sogamoso',
-                    abbreviation: 'S'
-                },
-                {
-                    _id: 22,
-                    name: 'Chiquinquirá',
-                    abbreviation: 'CH'
-                },
-                {
-                    _id: 23,
-                    name: 'Aguazul',
-                    abbreviation: 'AZ'
-                },
-            ],
+            Sectional: [],
         }),
+        beforeUpdate() {
+            this.Sectional = this.faculties.filter(f => f.name.charAt(0) === 'S');
+            this.faculties = this.faculties.filter(f => f.name.charAt(0) === 'F');
+        },
+        created() {
+            this.Sectional = this.faculties.filter(f => f.name.charAt(0) === 'S');
+            this.faculties = this.faculties.filter(f => f.name.charAt(0) === 'F');
+        }
     }
 </script>
 
