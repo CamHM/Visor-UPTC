@@ -18,16 +18,19 @@
             </v-tooltip>
             <span class="title white--text display-1 font-regular">Facultad {{ $route.params.id }}</span>
             <br /><br/>
-            <div class="main secondary success--text">
-                Aquí van las gráficas, Sumercé!
-            </div>
+            <Indicator/>
         </div>
     </v-content>
 </template>
 
 <script>
+    import Indicator from "./Indicator";
+
     export default {
         name: "Faculty",
+        components: {
+            Indicator: Indicator
+        },
         props: ['faculty'],
         methods: {
             goHome() {

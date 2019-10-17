@@ -5,6 +5,7 @@
                 <v-col lg="3" md="4" sm="4" xs="4">
                     <div class="white" style="border-radius: 35px; height: 50px">
                         <img src="https://res.cloudinary.com/dqcyu2ism/image/upload/v1571300925/acre_color_jpg_jxl4tu.jpg">
+<!--                        <img src="http://52.14.175.208/assets/ociteblogo.png">-->
                     </div>
                 </v-col>
                 <v-col md="4" lg="5"></v-col>
