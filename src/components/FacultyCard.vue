@@ -2,6 +2,7 @@
     <v-card
         class="card secondary"
         elevation="5"
+        v-on:click.prevent.self="navigate(faculty._id)"
     >
         <br />
         <v-avatar color="orange" size="85">
@@ -18,7 +19,12 @@
         name: "FacultyCard",
         props: [
             'faculty',
-        ]
+        ],
+        methods: {
+            navigate(id) {
+                this.$router.push(`/faculty/${id}`)
+            }
+        },
     }
 </script>
 

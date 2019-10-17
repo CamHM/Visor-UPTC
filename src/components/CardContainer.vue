@@ -22,10 +22,5 @@
   export default {
     components: {FacultyCard},
     props: ['title', 'data'],
-    methods: {function () {
-      if(this.$apollo.loading) {
-        this.value += 10
-      }}
-    },
   };
 </script>
