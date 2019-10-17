@@ -6,7 +6,7 @@
     >
         <br />
         <v-avatar color="orange" size="85">
-            <span class="text white--text headline font-weight-thin">{{ faculty.abbreviation }}</span>
+            <span class="text secondary--text headline font-weight-thin">{{ faculty.abbreviation }}</span>
         </v-avatar>
         <v-card-text>
             <h2 class="text title warning--text font-weight-thin">{{ faculty.name }}</h2>
