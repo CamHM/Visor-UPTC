@@ -3,12 +3,12 @@
     <v-content class="primary" align="center" style="padding: 0 20px 40px 20px">
       <v-container fluid>
         <v-row>
-          <v-col cols="3">
+          <v-col lg="3" md="4" sm="4" xs="4">
             <div class="white" style="border-radius: 35px; height: 50px">
-              <img src="https://res.cloudinary.com/dqcyu2ism/image/upload/v1571295449/acre_color_jpg_dfgg1t.jpg">
+              <img src="https://res.cloudinary.com/dqcyu2ism/image/upload/v1571300925/acre_color_jpg_jxl4tu.jpg">
             </div>
           </v-col>
-          <v-col cols="5"></v-col>
+          <v-col md="4" lg="5"></v-col>
           <v-col cols="4">
             <p class="display-1 font-weight-light white--text">Visor OCITEB</p>
           </v-col>
@@ -28,45 +28,21 @@
 
 <script>
 import CardContainer from './components/CardContainer';
+import { FACULTIES } from "./graphql/queries";
 
 export default {
   name: 'App',
   components: {
     CardContainer: CardContainer,
   },
+  apollo: {
+    faculties: {
+      query: FACULTIES,
+      update: data => data.Faculties
+    }
+  },
   data: () => ({
-    faculties: [
-      {
-        id: 1,
-        name: 'Facultad de Ciencias de la Salud',
-        abbreviation: 'FCS'
-      },
-      {
-        id: 2,
-        name: 'Facultad de Ciencias Agropecuarias',
-        abbreviation: 'FCA'
-      },
-      {
-        id: 3,
-        name: 'Facultad de Ingeniería',
-        abbreviation: 'FI'
-      },
-      {
-        id: 4,
-        name: 'Facultad de Derecho y Ciencias Sociales',
-        abbreviation: 'FDC'
-      },
-      {
-        id: 5,
-        name: 'Facultad de Ciencias Económicas y Administrativas',
-        abbreviation: 'FCEA'
-      },
-      {
-        id: 6,
-        name: 'FESAD',
-        abbreviation: 'FESAD'
-      },
-    ],
+    faculties: [],
     Sectional: [
       {
         id: 20,
