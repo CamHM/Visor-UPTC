@@ -2,10 +2,10 @@
     <v-content class="secondary content">
         <v-row>
             <v-col cols="8">
-                <CardIndicator v-bind:data="indicatorName" color="accent" main="true"/>
+                <CardIndicator color="primary" main="true" v-bind:data="mainCard"/>
             </v-col>
             <v-col cols="4">
-                <GraphicsList/>
+                <GraphicsList v-bind:list="graphicList" @move="moveCard($event)"/>
             </v-col>
         </v-row>
     </v-content>
@@ -21,9 +21,19 @@
             CardIndicator: CardIndicator,
             GraphicsList: GraphicsList
         },
-        data() {
-            return {
-                indicatorName: "Número de proyectos de investigación según financiación"
+        data: () => ({
+            graphicList: [
+                {id: 2, title: 'Número de proyectos de investigación según financiación'},
+                {id: 3, title: 'Inversión en I+D a nivel de proyectos'},
+                {id: 4, title: 'Inversión en I+D por tipo de entidad'},
+            ],
+            mainCard: {id: 1, title: 'Tarjeta A' }
+        }),
+        methods: {
+            moveCard(id) {
+                this.graphicList.push(this.mainCard);
+                this.mainCard = this.graphicList.find(obj => obj.id === id);
+                this.graphicList = this.graphicList.filter(item => item.id !== this.mainCard.id);
             }
         }
     }

@@ -1,10 +1,12 @@
 <template>
     <v-container>
-        <v-card :color="color">
-            <div v-bind:class="[main ? 'mainCard' : 'card']">
-
-            </div>
-        </v-card>
+        <v-hover v-slot:default="{ hover }">
+            <v-card :color="color" :elevation="main ? 4 : (hover ? 16 : 2)" @click="$emit('move-card', Number(data.id))">
+                <div v-bind:class="[main ? 'mainCard' : 'card']">
+                    <p v-bind:class="[main ? 'danger--text headline font-weight-light general' : 'info--text caption font-weight-light general']">{{ data.title }}</p>
+                </div>
+            </v-card>
+        </v-hover>
     </v-container>
 </template>
 
@@ -32,5 +34,10 @@
         width: 100% !important;
         height: 73vh !important;
     }
-
+    .card:hover {
+        cursor: pointer;
+    }
+    .general {
+        padding: 7px;
+    }
 </style>

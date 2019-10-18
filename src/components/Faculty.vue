@@ -48,7 +48,7 @@
     }
     .main {
         height: 80vh;
-        margin: 0 1% 0 7%;
+        margin: 0 3% 0 7%;
         text-align: center;
     }
     .title {

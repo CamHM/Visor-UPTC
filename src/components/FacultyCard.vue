@@ -34,9 +34,8 @@
         transition: all .3s ease-in-out;
         height: 230px;
     }
-
     .card:hover {
-        transform: translate3d(10px, -20px, 0px);
+        transform: translate3d(0px, -15px, 0px);
         cursor: pointer;
         background-color: rgba(255, 255, 255, 0.1) !important;
     }

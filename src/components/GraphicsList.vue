@@ -1,24 +1,10 @@
 <template>
     <v-container class="primary main">
-        <v-row v-for="card in cards" v-bind:key="card">
+        <v-row v-for="item in list" v-bind:key="item.id">
             <v-col>
-                <CardIndicator :data="card" :color="card.color" />
+                <CardIndicator :data="item" color="secondary" @move-card="changeCard($event)" />
             </v-col>
         </v-row>
-        <!--
-        <v-card v-for="card in cards"
-                :key="card.title"
-                :cols="card.flex" class="ma-1">
-            <v-img
-                    :src="card.src"
-                    class="white--text align-start"
-                    gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                    height="200px"
-            >
-                <v-card-title v-text="card.title"></v-card-title>
-            </v-img>
-        </v-card>
-        -->
     </v-container>
 </template>
 
@@ -27,13 +13,15 @@
     export default {
         name: "GraphicsList",
         components: {CardIndicator},
+        props: ['list'],
         data: () => ({
-            cards: [
-                {title: 'Número de proyectos de investigación según financiación', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12, color: 'success'},
-                {title: 'Inversión en I+D a nivel de proyectos', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6, color: 'accent'},
-                {title: 'Inversión en I+D por tipo de entidad', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6, color: 'warning'},
-            ],
-        })
+            press: 0
+        }),
+        methods: {
+            changeCard(id) {
+                this.$emit('move', id)
+            }
+        }
     }
 </script>
 
@@ -43,5 +31,16 @@
         width: 90%;
         height: 75vh;
         overflow-y: auto;
+    }
+    .main::-webkit-scrollbar {
+        width: 5px;
+    }
+    .main::-webkit-scrollbar-thumb {
+        background-color: #29FFCC;
+        border-radius: 5px;
+    }
+    .main::-webkit-scrollbar-thumb:active {
+        background: #CC29FF;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
     }
 </style>

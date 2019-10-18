@@ -15,6 +15,8 @@ export default new Vuetify({
         accent: '#FCFF29',
         warning: '#FFCC29',
         success: '#91FF29',
+        info: '#29FFCC',
+        danger: '#CC29FF',
       },
     },
   }
