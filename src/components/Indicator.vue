@@ -1,10 +1,10 @@
 <template>
-    <v-content class="secondary">
+    <v-content class="secondary content">
         <v-row>
-            <v-col cols="9">
-                <CardIndicator v-bind:data="indicatorName" />
+            <v-col cols="8">
+                <CardIndicator v-bind:data="indicatorName" color="accent" main="true"/>
             </v-col>
-            <v-col cols="3">
+            <v-col cols="4">
                 <GraphicsList/>
             </v-col>
         </v-row>
@@ -30,5 +30,8 @@
 </script>
 
 <style scoped>
-
+    .content {
+        height: 80vh;
+        border-radius: 5px;
+    }
 </style>

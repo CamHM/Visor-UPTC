@@ -1,13 +1,10 @@
 <template>
-    <v-content class="primary">
-        <div class="content">
+    <v-content class="primary t">
+        <div class="top">
             <v-tooltip bottom>
                 <template v-slot:activator="{on}">
-                    <v-btn
-                        color="accent secondary--text"
-                        top
-                        right
-                        fab
+                    <v-btn color="accent secondary--text"
+                        top right fab
                         v-on:click.prevent="goHome"
                         v-on="on"
                     >
@@ -17,7 +14,8 @@
                 <span>Volver a facultades</span>
             </v-tooltip>
             <span class="title white--text display-1 font-regular">Facultad {{ $route.params.id }}</span>
-            <br /><br/>
+        </div>
+        <div class="main">
             <Indicator/>
         </div>
     </v-content>
@@ -41,14 +39,16 @@
 </script>
 
 <style scoped>
-    .content {
+    .t {
+        height: 100vh;
+    }
+    .top {
+        height: 15vh;
         padding: 20px;
     }
     .main {
         height: 80vh;
-        width: 100vh;
-        border-radius: 3px;
-        margin-left: 5%;
+        margin: 0 1% 0 7%;
         text-align: center;
     }
     .title {

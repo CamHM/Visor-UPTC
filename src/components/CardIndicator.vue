@@ -1,14 +1,9 @@
 <template>
     <v-container>
-        <v-card>
-            <v-img
-                    :src="card.src"
-                    class="white--text align-end"
-                    gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                    height="550px"
-            >
-                <v-card-title v-text="data"></v-card-title>
-            </v-img>
+        <v-card :color="color">
+            <div v-bind:class="[main ? 'mainCard' : 'card']">
+
+            </div>
         </v-card>
     </v-container>
 </template>
@@ -21,11 +16,21 @@
                 {title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6}
         }),
         props: [
-            'data'
+            'data',
+            'color',
+            'main'
         ]
     }
 </script>
 
 <style scoped>
+    .card {
+        width: 100% !important;
+        height: 30vh !important;
+    }
+    .mainCard {
+        width: 100% !important;
+        height: 73vh !important;
+    }
 
 </style>
