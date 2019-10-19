@@ -13,28 +13,39 @@
                 </template>
                 <span>Volver a facultades</span>
             </v-tooltip>
-            <span class="title white--text display-1 font-regular">Facultad {{ $route.params.id }}</span>
+            <span class="headline white--text display-1 font-regular title">{{ $route.params.facultyName }}</span>
         </div>
         <div class="main">
-            <Indicator/>
+            <Indicator v-bind:i01="reportI01"/>
         </div>
     </v-content>
 </template>
 
 <script>
     import Indicator from "./Indicator";
+    import { I01 } from "../graphql/queries";
 
     export default {
         name: "Faculty",
         components: {
             Indicator: Indicator
         },
-        props: ['faculty'],
+        apollo: {
+            reportI01: {
+                query: I01,
+                    variables: {
+                    faculty: 'INGENIERIA'
+                }
+            }
+        },
         methods: {
             goHome() {
                 this.$router.push('/')
             }
-        }
+        },
+        data: () => ({
+            reportI01: {}
+        })
     }
 </script>
 
@@ -52,6 +63,6 @@
         text-align: center;
     }
     .title {
-        margin-left: 50px;
+        margin-left: 80px;
     }
 </style>

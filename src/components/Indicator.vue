@@ -35,7 +35,8 @@
                 this.mainCard = this.graphicList.find(obj => obj.id === id);
                 this.graphicList = this.graphicList.filter(item => item.id !== this.mainCard.id);
             }
-        }
+        },
+        props: ['i01']
     }
 </script>
 

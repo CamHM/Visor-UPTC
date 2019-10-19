@@ -1,9 +1,13 @@
 <template>
     <v-container>
         <v-hover v-slot:default="{ hover }">
-            <v-card :color="color" :elevation="main ? 4 : (hover ? 16 : 2)" @click="$emit('move-card', Number(data.id))">
+            <v-card :color="color" :elevation="main ? 4 : (hover ? 16 : 2)"  @click="$emit('move-card', Number(data.id))">
                 <div v-bind:class="[main ? 'mainCard' : 'card']">
                     <p v-bind:class="[main ? 'danger--text headline font-weight-light general' : 'info--text caption font-weight-light general']">{{ data.title }}</p>
+
+                    <DonutChart v-bind:data="chartData" v-if="main" fullsize="true" />
+                    <DonutChart v-bind:data="chartData" v-if="!main" />
+
                 </div>
             </v-card>
         </v-hover>
@@ -11,24 +15,31 @@
 </template>
 
 <script>
+    import DonutChart from "./charts/DonutChart";
+
     export default {
         name: "CardIndicator",
-        data: () => ({
-            card:
-                {title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6}
-        }),
+        components: {
+            DonutChart
+        },
         props: [
             'data',
             'color',
-            'main'
-        ]
+            'main',
+        ],
+        data: () => ({
+            chartData: {
+                series: [40, 58, 10, 34],
+                labels: ['Manzana', 'Mango', 'Pera', 'Mandrina']
+            }
+        })
     }
 </script>
 
 <style scoped>
     .card {
         width: 100% !important;
-        height: 30vh !important;
+        height: 35vh !important;
     }
     .mainCard {
         width: 100% !important;

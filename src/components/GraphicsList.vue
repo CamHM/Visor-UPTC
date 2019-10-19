@@ -34,6 +34,7 @@
     }
     .main::-webkit-scrollbar {
         width: 5px;
+        height: 5px;
     }
     .main::-webkit-scrollbar-thumb {
         background-color: #29FFCC;

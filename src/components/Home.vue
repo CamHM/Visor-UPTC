@@ -4,13 +4,8 @@
             <v-row>
                 <v-col lg="3" md="4" sm="4" xs="4">
                     <div class="white" style="border-radius: 35px; height: 50px">
-                        <img src="https://res.cloudinary.com/dqcyu2ism/image/upload/v1571300925/acre_color_jpg_jxl4tu.jpg">
-<!--                        <img src="http://52.14.175.208/assets/ociteblogo.png">-->
+                        <img src="https://res.cloudinary.com/dqcyu2ism/image/upload/v1571378074/WhatsApp_Image_2019-10-18_at_12.50.51_AM_nbjf9n.jpg">
                     </div>
-                </v-col>
-                <v-col md="4" lg="5"></v-col>
-                <v-col cols="4">
-                    <p class="display-1 font-weight-light white--text">Visor OCITEB</p>
                 </v-col>
             </v-row>
             <v-row>
