@@ -13,39 +13,37 @@
                 </template>
                 <span>Volver a facultades</span>
             </v-tooltip>
-            <span class="headline white--text display-1 font-regular title">{{ $route.params.facultyName }}</span>
+            <span class="headline secondary--text display-1 font-regular titleHeader">
+                {{ faculty.name }}
+                <v-avatar class="avatar" size="70">
+                    <span class="text primary--text title font-weight-bold">{{ faculty.abbreviation }}</span>
+                </v-avatar>
+            </span>
         </div>
         <div class="main">
-            <Indicator v-bind:i01="reportI01"/>
+            <Indicator />
         </div>
     </v-content>
 </template>
 
 <script>
     import Indicator from "./Indicator";
-    import { I01 } from "../graphql/queries";
 
     export default {
         name: "Faculty",
         components: {
             Indicator: Indicator
         },
-        apollo: {
-            reportI01: {
-                query: I01,
-                    variables: {
-                    faculty: 'INGENIERIA'
-                }
-            }
-        },
         methods: {
             goHome() {
                 this.$router.push('/')
             }
         },
-        data: () => ({
-            reportI01: {}
-        })
+        data: function() {
+            return {
+                faculty: this.$store.getters.faculty,
+            }
+        }
     }
 </script>
 
@@ -62,7 +60,16 @@
         margin: 0 3% 0 7%;
         text-align: center;
     }
-    .title {
-        margin-left: 80px;
+    .titleHeader {
+        margin-left: 100px;
+        background-color: #29FFCC;
+        padding: 12px;
+        border-radius: 50px;
+    }
+    .avatar {
+        margin-left: 10px;
+        background-color: #fff;
+        border: #27293d 3px solid;
+        top: -3px;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <apexchart :class="[fullsize ? 'chart' : 'shortChart']" :options="chartOptions" :series="series" type="donut"></apexchart>
+    <apexchart :class="[fullsize ? 'chart' : 'shortChart']" :options="chartOptions" :series="series" type="pie"></apexchart>
 </template>
 
 <script>
@@ -13,11 +13,6 @@
         props: ['data', 'fullsize'],
         data: function () {
             return {
-                options: {
-                    chart: {
-                        type: 'donut'
-                    },
-                },
                 series: this.data.series,
                 chartOptions: {
                     labels: this.data.labels,

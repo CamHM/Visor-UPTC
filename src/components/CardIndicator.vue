@@ -1,13 +1,15 @@
 <template>
     <v-container>
         <v-hover v-slot:default="{ hover }">
-            <v-card :color="color" :elevation="main ? 4 : (hover ? 16 : 2)"  @click="$emit('move-card', Number(data.id))">
+            <v-card :color="color" :elevation="main ? 4 : (hover ? 16 : 2)" v-on:click="$emit('move-card', Number(data.info._id))">
                 <div v-bind:class="[main ? 'mainCard' : 'card']">
-                    <p v-bind:class="[main ? 'danger--text headline font-weight-light general' : 'info--text caption font-weight-light general']">{{ data.title }}</p>
-
-                    <DonutChart v-bind:data="chartData" v-if="main" fullsize="true" />
-                    <DonutChart v-bind:data="chartData" v-if="!main" />
-
+                    <p v-bind:class="[main ? 'danger--text headline font-weight-light general' : 'info--text caption font-weight-light general']">
+                        {{ data.info.code }} - {{ data.info.value }}</p>
+                    <DonutChart v-bind:data="chartDataI01" v-if="main" fullsize="true" />
+                    <!--
+                    <DonutChart v-bind:data="chartDataI02" v-if="!main" />
+                    -->
+                    <h5>{{data}}</h5>
                 </div>
             </v-card>
         </v-hover>
@@ -27,12 +29,17 @@
             'color',
             'main',
         ],
-        data: () => ({
-            chartData: {
-                series: [40, 58, 10, 34],
-                labels: ['Manzana', 'Mango', 'Pera', 'Mandrina']
+        data: function() {
+            return {
+                chartDataI01: {
+                    // series: this.data.reportI01.data.filter(d => d.year === 2017).map(v => v['total']),
+                    // labels: this.data.reportI01.data.filter(d => d.year === 2017).map(v => v['financing'])
+                },
+                chartDataI02: {
+
+                }
             }
-        })
+        },
     }
 </script>
 

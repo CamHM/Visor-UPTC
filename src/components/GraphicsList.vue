@@ -1,8 +1,8 @@
 <template>
     <v-container class="primary main">
-        <v-row v-for="item in list" v-bind:key="item.id">
+        <v-row v-for="item in list" v-bind:key="item.info._id">
             <v-col>
-                <CardIndicator :data="item" color="secondary" @move-card="changeCard($event)" />
+                <CardIndicator v-bind:data="item" color="secondary" @move-card="changeCard($event)" />
             </v-col>
         </v-row>
     </v-container>

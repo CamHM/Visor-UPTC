@@ -19,9 +19,9 @@ const I01 = gql`
                 value
             }
             data {
-                ANIOEJECUCION
-                TIPOFINANCIACION
-                TOTAL
+                year
+                financing
+                total
             }
             header {
                 nameColumn
@@ -30,4 +30,31 @@ const I01 = gql`
     }
 `;
 
-export { FACULTIES, I01 }
+const I02 = gql`
+    query I02 {
+        reportI02(
+            faculty: "INGENIERIA"
+        ) {
+            labels {
+                tag
+                name
+            }
+            info {
+                _id
+                code
+                value
+            }
+            data {
+                year
+                internalS_amount
+                internalE_amount
+                external_amount
+            }
+            header {
+                nameColumn
+            }
+        }
+    }
+`;
+
+export { FACULTIES, I01, I02 }
