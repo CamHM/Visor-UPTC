@@ -2,10 +2,10 @@
     <v-content class="secondary content">
         <v-row>
             <v-col cols="8">
-                <CardIndicator color="primary" main="true" v-bind:data="reportI01"/>
+                <CardIndicator color="primary" main="true" v-bind:data="{}"/>
             </v-col>
             <v-col cols="4">
-                <GraphicsList v-bind:list="graphicList"/>
+                <GraphicsList v-bind:list="cardList"/>
             </v-col>
         </v-row>
         <v-row>
@@ -29,7 +29,14 @@
         apollo: {
             reportI01: {
                 query: I01,
-                variables: {faculty: "INGENIERIA"},
+                variables() {
+                    return {
+                        faculty: this.$store.getters.faculty.report
+                    }
+                },
+                result({data, loading}) {
+                    !loading && this.$store.dispatch('setMainCard', data.reportI01)
+                }
             },
             reportI02: {
                 query: I02,
@@ -38,7 +45,9 @@
         },
         data() {
             return {
-                graphicList: []
+                mainCard: this.$store.getters.mainCard,
+                cardList: this.$store.getters.cardList,
+                loading: false
             }
         },
         methods: {
@@ -47,7 +56,7 @@
                 this.mainCard = this.graphicList.find(obj => obj.id === id);
                 this.graphicList = this.graphicList.filter(item => item.id !== this.mainCard.id);
             }
-        }
+        },
     }
 </script>
 
