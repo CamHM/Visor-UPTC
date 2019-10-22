@@ -1,5 +1,5 @@
 <template>
-    <apexchart v-bind:class="[fullSize ? 'chart' : 'shortChart']" v-bind:type="data.type" :options="options" :series="series"></apexchart>
+    <apexchart height=300 v-bind:type="data.type" :options="options" :series="series"></apexchart>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
         components: {
             apexchart: VueApexCharts
         },
-        props: ['data', 'fullSize'],
+        props: ['data', 'fullsize'],
         data: function () {
             return {
                 options: {
@@ -40,7 +40,7 @@
                         type: 'gradient',
                         gradient: {
                             shade: 'dark',
-                            gradientToColors: ['#FDD835'],
+                            gradientToColors: ['#45dec2'],
                             shadeIntensity: 1,
                             type: 'horizontal',
                             opacityFrom: 1,

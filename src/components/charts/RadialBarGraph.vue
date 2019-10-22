@@ -1,5 +1,5 @@
 <template>
-    <apexchart type=radialBar height=350 :options="options" :series="series"/>
+    <apexchart type=radialBar height=400 :options="options" :series="series"/>
 </template>
 
 <script>

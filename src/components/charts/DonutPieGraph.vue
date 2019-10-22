@@ -1,5 +1,5 @@
 <template>
-    <apexchart v-bind:class="[fullSize ? 'shortChart' : 'chart']" v-bind:type="data.type" :options="options" :series="series"></apexchart>
+    <apexchart height="300" v-bind:type="data.type" :options="options" :series="series"></apexchart>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
         components: {
             apexchart: VueApexCharts
         },
-        props: ['data', 'fullSize'],
+        props: ['data', 'fullsize'],
         data: function () {
             return {
                 series: this.data.series,
@@ -24,7 +24,8 @@
                         type: 'gradient',
                     },
                     legend: {
-                        position: 'bottom'
+                        position: 'bottom',
+                        show: true
                     },
                     plotOptions: {
                         pie: {

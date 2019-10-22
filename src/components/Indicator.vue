@@ -1,16 +1,22 @@
 <template>
     <v-content class="secondary content">
         <v-row>
-            <v-col cols="8">
-                <CardIndicator color="white" main="true" v-bind:data="getMainCard"/>
+            <v-col cols="6">
+                <v-row>
+                    <CardIndicator color="alter" main=true v-bind:data="getMainCard"/>
+                </v-row>
+                <v-row>
+                    <!--
+                    <div class="text-center div">
+                        <v-btn class="mx-2"  dark small color="teal" v-on:click="changeCard()">
+                            Siguiente
+                        </v-btn>
+                    </div>
+                    -->
+                </v-row>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="6">
                 <GraphicsList v-bind:list="getCardList"/>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col>
-                {{$store.getters.cardList}}
             </v-col>
         </v-row>
     </v-content>
@@ -19,7 +25,7 @@
 <script>
     import CardIndicator from "./CardIndicator";
     import GraphicsList from "./GraphicsList";
-    import { I01, I02 } from "../graphql/queries";
+    import { I01, I02, I03, I05, I06 } from "../graphql/queries";
 
     export default {
         name: "Indicator",
@@ -50,12 +56,47 @@
                     !loading && this.$store.dispatch('addCardList', data.reportI02)
                 }
             },
+            reportI03: {
+                query: I03,
+                variables() {
+                    return {
+                        faculty: this.$store.getters.faculty.report
+                    }
+                },
+                result({data, loading}) {
+                    !loading && this.$store.dispatch('addCardList', data.reportI03)
+                }
+            },
+            reportI05: {
+                query: I05,
+                variables() {
+                    return {
+                        faculty: this.$store.getters.faculty.report
+                    }
+                },
+                result({data, loading}) {
+                    !loading && this.$store.dispatch('addCardList', data.reportI05)
+                }
+            },
+            reportI06: {
+                query: I06,
+                variables() {
+                    return {
+                        faculty: this.$store.getters.faculty.report
+                    }
+                },
+                result({data, loading}) {
+                    !loading && this.$store.dispatch('addCardList', data.reportI06)
+                }
+            },
         },
         methods: {
-            moveCard(id) {
-                this.graphicList.push(this.mainCard);
-                this.mainCard = this.graphicList.find(obj => obj.id === id);
-                this.graphicList = this.graphicList.filter(item => item.id !== this.mainCard.id);
+            changeCard() {
+                const actualCard = this.$store.getters.cardList[0];
+                this.$store.dispatch('addCardList', this.$store.getters.mainCard);
+                this.$store.dispatch('setMainCard', actualCard);
+                this.$store.dispatch('removeFirstCard');
+                return true
             }
         },
         created() {
@@ -68,13 +109,16 @@
             getCardList() {
                 return this.$store.getters.cardList
             }
-        }
+        },
     }
 </script>
 
 <style scoped>
     .content {
-        height: 80vh;
+        height: 82vh;
         border-radius: 5px;
+    }
+    .div {
+        width: 100%;
     }
 </style>

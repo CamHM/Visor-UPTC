@@ -59,7 +59,7 @@ const I02 = gql`
 
 const I03 = gql`
     query I03($faculty: String!) {
-        reportI02(
+        reportI03(
             faculty: $faculty
         ) {
             labels {
@@ -85,7 +85,7 @@ const I03 = gql`
 
 const I05 = gql`
     query I05($faculty: String!) {
-        reportI02(
+        reportI05(
             faculty: $faculty
         ) {
             labels {
@@ -99,7 +99,6 @@ const I05 = gql`
             }
             data {
                 year
-                faculty
                 total
             }
             header {
@@ -111,7 +110,7 @@ const I05 = gql`
 
 const I06 = gql`
     query I06($faculty: String!) {
-        reportI02(
+        reportI06(
             faculty: $faculty
         ) {
             labels {

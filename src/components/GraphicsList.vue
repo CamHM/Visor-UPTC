@@ -2,7 +2,7 @@
     <v-container class="primary main">
         <v-row v-for="item in list" v-bind:key="item.info._id">
             <v-col>
-                <CardIndicator v-bind:data="item" color="secondary" @move-card="changeCard($event)" />
+                <CardIndicator v-bind:data="item" color="white" main="false"/>
             </v-col>
         </v-row>
     </v-container>
@@ -28,8 +28,8 @@
 <style scoped>
     .main {
         margin: 0;
-        width: 90%;
-        height: 75vh;
+        width: 95%;
+        height: 70vh;
         overflow-y: auto;
     }
     .main::-webkit-scrollbar {

@@ -17,6 +17,7 @@ export default new Vuetify({
         success: '#91FF29',
         info: '#29FFCC',
         danger: '#CC29FF',
+        alter: '#d9d9d9'
       },
     },
   }

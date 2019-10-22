@@ -24,6 +24,12 @@ export default new Vuex.Store({
         },
         resetList({ commit }) {
             commit('resetList')
+        },
+        removeFirstCard({commit}) {
+            commit('removeFirstCard')
+        },
+        setFirst({commit}) {
+            commit('setFirst')
         }
     },
     mutations: {
@@ -43,6 +49,12 @@ export default new Vuex.Store({
         },
         resetList(state) {
             state.cardList = [];
+        },
+        removeFirstCard(state) {
+            state.cardList.shift()
+        },
+        setFirst(state) {
+            state.mainCard = state.cardList[0]
         }
     },
     getters: {
