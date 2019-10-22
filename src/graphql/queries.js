@@ -31,9 +31,9 @@ const I01 = gql`
 `;
 
 const I02 = gql`
-    query I02 {
+    query I02($faculty: String!) {
         reportI02(
-            faculty: "INGENIERIA"
+            faculty: $faculty
         ) {
             labels {
                 tag
@@ -57,4 +57,83 @@ const I02 = gql`
     }
 `;
 
-export { FACULTIES, I01, I02 }
+const I03 = gql`
+    query I03($faculty: String!) {
+        reportI02(
+            faculty: $faculty
+        ) {
+            labels {
+                tag
+                name
+            }
+            info {
+                _id
+                code
+                value
+            }
+            data {
+                year
+                entity
+                total
+            }
+            header {
+                nameColumn
+            }
+        }
+    }
+`;
+
+const I05 = gql`
+    query I05($faculty: String!) {
+        reportI02(
+            faculty: $faculty
+        ) {
+            labels {
+                tag
+                name
+            }
+            info {
+                _id
+                code
+                value
+            }
+            data {
+                year
+                faculty
+                total
+            }
+            header {
+                nameColumn
+            }
+        }
+    }
+`;
+
+const I06 = gql`
+    query I06($faculty: String!) {
+        reportI02(
+            faculty: $faculty
+        ) {
+            labels {
+                tag
+                name
+            }
+            info {
+                _id
+                code
+                value
+            }
+            data {
+                year
+                faculty
+                total
+            }
+            header {
+                nameColumn
+            }
+        }
+    }
+`;
+
+
+export { FACULTIES, I01, I02, I03, I05, I06 }

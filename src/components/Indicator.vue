@@ -2,14 +2,15 @@
     <v-content class="secondary content">
         <v-row>
             <v-col cols="8">
-                <CardIndicator color="primary" main="true" v-bind:data="{}"/>
+                <CardIndicator color="white" main="true" v-bind:data="getMainCard"/>
             </v-col>
             <v-col cols="4">
-                <GraphicsList v-bind:list="cardList"/>
+                <GraphicsList v-bind:list="getCardList"/>
             </v-col>
         </v-row>
         <v-row>
             <v-col>
+                {{$store.getters.cardList}}
             </v-col>
         </v-row>
     </v-content>
@@ -40,15 +41,15 @@
             },
             reportI02: {
                 query: I02,
-                variables: {faculty: "INGENIERIA"},
-            }
-        },
-        data() {
-            return {
-                mainCard: this.$store.getters.mainCard,
-                cardList: this.$store.getters.cardList,
-                loading: false
-            }
+                variables() {
+                    return {
+                        faculty: this.$store.getters.faculty.report
+                    }
+                },
+                result({data, loading}) {
+                    !loading && this.$store.dispatch('addCardList', data.reportI02)
+                }
+            },
         },
         methods: {
             moveCard(id) {
@@ -57,6 +58,17 @@
                 this.graphicList = this.graphicList.filter(item => item.id !== this.mainCard.id);
             }
         },
+        created() {
+            this.$store.dispatch('resetList')
+        },
+        computed: {
+            getMainCard() {
+                return this.$store.getters.mainCard
+            },
+            getCardList() {
+                return this.$store.getters.cardList
+            }
+        }
     }
 </script>
 

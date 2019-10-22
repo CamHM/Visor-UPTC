@@ -21,6 +21,9 @@ export default new Vuex.Store({
         },
         addCardList({ commit }, cardInfo) {
             commit('addCardList', cardInfo)
+        },
+        resetList({ commit }) {
+            commit('resetList')
         }
     },
     mutations: {
@@ -37,6 +40,9 @@ export default new Vuex.Store({
         },
         addCardList(state, cardInfo) {
             state.cardList.push(cardInfo)
+        },
+        resetList(state) {
+            state.cardList = [];
         }
     },
     getters: {
