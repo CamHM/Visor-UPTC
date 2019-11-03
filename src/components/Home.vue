@@ -10,10 +10,12 @@
             </v-row>
             <v-row>
                 <v-col cols="7">
-                    <CardContainer title="Facultades" v-bind:data="faculties"/>
+                    <Carousel title="Facultades" v-bind:dataM="faculties"></Carousel>
+<!--                    <CardContainer title="Facultades" v-bind:data="faculties"/>-->
                 </v-col>
                 <v-col cols="5">
-                    <CardContainer title="Seccionales" v-bind:data="Sectional"/>
+                    <Carousel title="Seccionales" v-bind:dataM="Sectional"></Carousel>
+<!--                    <CardContainer title="Seccionales" v-bind:data="Sectional"/>-->
                 </v-col>
             </v-row>
         </v-container>
@@ -21,13 +23,15 @@
 </template>
 
 <script>
-    import CardContainer from './CardContainer';
+    // import CardContainer from './CardContainer';
     import { FACULTIES } from "../graphql/queries";
+    import Carousel from "./Carousel";
 
     export default {
         name: "Home",
         components: {
-            CardContainer: CardContainer,
+            // CardContainer: CardContainer,
+            Carousel: Carousel
         },
         apollo: {
             faculties: {
